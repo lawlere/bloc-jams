@@ -51,6 +51,12 @@
      color: rgb(233,50,117);
  }
 
+.links-container .navbar-link:active {
+    color: rgb(233,50,117);
+    background-color: white;
+    
+ }
+
 .navbar {
     position: relative;
     padding: 0.5rem;
