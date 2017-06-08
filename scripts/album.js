@@ -29,6 +29,22 @@ var albumMarconi = {
     ]
 };
 
+// Third Example Album
+var albumXX = {
+    title: 'I See You',
+    artist: 'The XX',
+    label: 'Spotify',
+    year: '2017',
+    albumArtUrl: 'assets/images/album_covers/xx.png',
+    songs: [
+        { title: 'Song 1', duration: '1:01' },
+        { title: 'Song 2', duration: '5:01' },
+        { title: 'Song 3', duration: '3:21'},
+        { title: 'Song 4', duration: '3:14' },
+        { title: 'Song 5', duration: '2:15'}
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
        '<tr class="album-view-song-item">'
@@ -41,13 +57,14 @@ var createSongRow = function(songNumber, songName, songLength) {
     return template;
 };
 
+// #1
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
 var setCurrentAlbum = function(album) {
-    // #1
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
     // #2
     albumTitle.firstChild.nodeValue = album.title;
@@ -66,4 +83,15 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    var albums = [albumPicasso, albumMarconi, albumXX];
+    var index = 1;
+    albumImage.addEventListener("click", function(event) {
+      setCurrentAlbum(albums[index]);
+      index++;
+      if (index == albums.length) {
+        index = 0;
+      }
+    });
+
 };
